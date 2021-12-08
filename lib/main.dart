@@ -1,4 +1,5 @@
-import 'package:bmi_calculator/palette.dart';
+import 'package:bmi_calculator/screens/input_screen.dart';
+import 'package:bmi_calculator/utils/palette.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -24,35 +25,8 @@ class BMICalculator extends StatelessWidget {
           bodyText2: TextStyle(color: Colors.white)
         )
       ),
-      home: InputPage()
+      home: InputScreen()
     );
   }
 }
 
-
-class InputPage extends StatefulWidget {
-  @override
-  _InputPageState createState() => _InputPageState();
-}
-
-class _InputPageState extends State<InputPage> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('BMI CALCULATOR'),
-        centerTitle: true,
-      ),
-      body: SingleChildScrollView(
-        child: Center(
-          child: Text('Hi There'),
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
-        onPressed: (){},
-      ),
-
-    );
-  }
-}
