@@ -2,13 +2,14 @@ import 'package:bmi_calculator/constants/constants.dart';
 import 'package:bmi_calculator/screens/result_screen.dart';
 import 'package:bmi_calculator/utils/gender_enum.dart';
 import 'package:bmi_calculator/widgets/card_item.dart';
+import 'package:bmi_calculator/widgets/custom_button.dart';
 import 'package:bmi_calculator/widgets/icon_content.dart';
 import 'package:bmi_calculator/widgets/round_icon_button.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
+import 'package:bmi_calculator/utils/calculate_brain.dart';
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+  HomeScreen({Key? key}) : super(key: key);
 
   @override
   _HomeScreenState createState() => _HomeScreenState();
@@ -87,7 +88,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        'HIGHT',
+                        'height',
                         style: kLabelTextStyle,
                       ),
                       Row(
@@ -214,21 +215,16 @@ class _HomeScreenState extends State<HomeScreen> {
                 )),
               ],
             ),
-            GestureDetector(
-              onTap: () {
-                Navigator.pushNamed(context, '/result');
-              },
-
-              child: Container(
-                color: kButtonColor,
-                height: 65,
-                width: double.infinity,
-                margin: const EdgeInsets.only(
-                  top: 15,
-                ),
-                child: Center(child: Text('CALCULATE YOUR BMI', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),)),
-                // child: Text('CALCULATE YOUR BMI'),
-              ),
+            CustomButton(
+              buttonText: 'CALCULATE YOUR BMI',
+              onPress: () {
+                CalculateBrain calc = CalculateBrain(weight, height);
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>ResultScreen(
+                  bmiResult: calc.calculateBMI(),
+                  resultText: calc.getResult(),
+                  interpretation: calc.getInterpretation(),
+                )));
+              }
             )
           ],
         ),

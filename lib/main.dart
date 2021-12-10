@@ -27,11 +27,8 @@ class BMICalculator extends StatelessWidget {
           bodyText2: TextStyle(color: Colors.white)
         )
       ),
-      initialRoute: '/',
-      routes: {
-        '/':(context)=> const HomeScreen(),
-        '/result':(context) =>const ResultScreen()
-      }
+      home: HomeScreen(),
+
     );
   }
 }
