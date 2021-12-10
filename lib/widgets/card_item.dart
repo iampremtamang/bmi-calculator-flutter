@@ -6,6 +6,7 @@ class CardItem extends StatelessWidget {
   final Color color;
   final double height;
   final Widget cardChild;
+  final gestureOnTap;
   
   const CardItem({
     Key? key,
@@ -13,21 +14,25 @@ class CardItem extends StatelessWidget {
     required this.right,
     required this.color,
     required this.height,
-    required this.cardChild
+    required this.cardChild, 
+    required this.gestureOnTap
 
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin:
-          EdgeInsets.only(left:left, top: 10, right: right, bottom: 10),
-      height: height,
-      decoration: BoxDecoration(
-        color: color,
-        borderRadius: BorderRadius.circular(5.0),
+    return GestureDetector(
+      onTap: gestureOnTap,
+      child: Container(
+        margin:
+            EdgeInsets.only(left:left, top: 15, right: right, bottom: 15),
+        height: height,
+        decoration: BoxDecoration(
+          color: color,
+          borderRadius: BorderRadius.circular(5.0),
+        ),
+        child: cardChild,
       ),
-      child: cardChild,
     );
   }
 }

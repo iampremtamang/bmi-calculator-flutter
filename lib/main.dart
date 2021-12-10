@@ -1,4 +1,5 @@
-import 'package:bmi_calculator/screens/input_screen.dart';
+import 'package:bmi_calculator/screens/home_screen.dart';
+import 'package:bmi_calculator/screens/result_screen.dart';
 import 'package:bmi_calculator/utils/palette.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -12,6 +13,7 @@ class BMICalculator extends StatelessWidget {
   
   @override
   Widget build(BuildContext context) {
+    
     SystemChrome.setEnabledSystemUIOverlays([]);
     return MaterialApp(
       theme: ThemeData(
@@ -25,7 +27,11 @@ class BMICalculator extends StatelessWidget {
           bodyText2: TextStyle(color: Colors.white)
         )
       ),
-      home: InputScreen()
+      initialRoute: '/',
+      routes: {
+        '/':(context)=> const HomeScreen(),
+        '/result':(context) =>const ResultScreen()
+      }
     );
   }
 }
